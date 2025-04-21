@@ -249,5 +249,5 @@ if __name__=="__main__":
     evaluate(args=conf,
             model=model,
             data_loader_list=ev_loader_list,
-            epoch=-1,
-            logger=logger)
+            logger=logger,
+            epoch=None)

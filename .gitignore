@@ -11,3 +11,7 @@ evaluate.sh
 *.log
 *pycache*
 *.pyc
+
+# Git 필터 스크립트
+clean_config_paths.sh
+smudge_config_paths.sh
