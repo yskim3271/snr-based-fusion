@@ -1,17 +1,12 @@
-dataset
 outputs
-transcripts
 checkpoint/
 run.sh
-sandbox.py
-backup
-conf/
 evaluate.sh
 
 *.log
 *pycache*
 *.pyc
 
-# Git 필터 스크립트
+# Git filter scripts
 clean_config_paths.sh
 smudge_config_paths.sh
