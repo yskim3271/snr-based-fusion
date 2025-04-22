@@ -2,6 +2,7 @@ outputs
 checkpoint/
 run.sh
 evaluate.sh
+config_snrmod.yaml
 
 *.log
 *pycache*

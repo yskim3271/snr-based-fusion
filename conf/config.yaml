@@ -22,7 +22,7 @@ shift: 32000
 
 # noise augmentation for train
 train_noise:
-  snr_range: [-20, 20]
+  snr_range: [-15, 20]
   reverb_proportion: 0.75
   target_dB_FS: -25
   target_dB_FS_floating_value: 10
@@ -30,7 +30,7 @@ train_noise:
 
 # noise augmentation for valid
 valid_noise:
-  snr_range: [-15, 15]
+  snr_range: [-15, 10]
   reverb_proportion: 0.5
   target_dB_FS: -25
   target_dB_FS_floating_value: 0
