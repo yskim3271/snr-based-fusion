@@ -243,6 +243,7 @@ if __name__=="__main__":
         ev_loader_list[f"{fixed_snr}"] = ev_loader
 
     logger.info(f"Model: {model_name}")
+    logger.info(f"Input type: {conf.input_type}")
     logger.info(f"Checkpoint: {chkpt_dir}")
     logger.info(f"Device: {device}")
     

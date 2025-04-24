@@ -180,11 +180,11 @@ class seconformer(nn.Module):
         length = int(math.ceil(length / self.resample))
         return int(length)
 
-    def forward(self, am, tm=None):
-        if tm is not None:
-            mix = torch.cat([am, tm], dim=1)
+    def forward(self, x1, x2=None):
+        if x2 is not None:
+            mix = torch.cat([x1, x2], dim=1)
         else:
-            mix = am
+            mix = x1
 
         if mix.dim() == 2:
             mix = mix.unsqueeze(1)

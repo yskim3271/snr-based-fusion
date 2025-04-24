@@ -4,7 +4,7 @@ input_type: am
 param:
   chin: 1
   chout: 1
-  hidden: 48
+  hidden: 64
   max_hidden: 10000
   causal: false
   glu: true
