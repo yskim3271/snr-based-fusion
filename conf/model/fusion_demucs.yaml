@@ -1,0 +1,25 @@
+model_name: fusion
+input_type: am+tm
+
+
+param:
+  win_len: 512
+  win_inc: 256
+  fft_len: 512
+  win_type: hann
+
+  model_name: demucs
+  param:
+    chin: 1
+    chout: 1
+    hidden: 64
+    max_hidden: 10000
+    causal: false
+    glu: true
+    depth: 5
+    kernel_size: 8
+    stride: 4
+    normalize: true
+    resample: 4
+    growth: 2
+    rescale: 0.1

@@ -311,14 +311,14 @@ class Solver(object):
             # Move inputs to the correct device
             tm = tm.to(self.device)
             noisy_am = noisy_am.to(self.device)
-            clean_am = clean_am.to(self.device)                    
+            clean_am = clean_am.to(self.device)             
 
             if self.input_type == "am":
                 clean_am_hat = self.model(noisy_am)
             elif self.input_type == "tm":
                 clean_am_hat = self.model(tm)
             elif self.input_type == "am+tm":
-                clean_am_hat = self.model(tm, noisy_am)
+                clean_am_hat = self.model(tm, noisy_am)                    
             else:
                 raise ValueError("Invalid input type, check input_type in config file.")
             
