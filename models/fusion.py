@@ -122,15 +122,13 @@ class fusion(nn.Module):
             win_len=self.win_len,
             win_inc=self.win_inc,
             fft_len=self.fft_len,
-            win_type=self.win_type,
-            feature_type='complex'
+            win_type=self.win_type
         )
         self.istft = ConviSTFT(
             win_len=self.win_len,
             win_inc=self.win_inc,
             fft_len=self.fft_len,
-            win_type=self.win_type,
-            feature_type='complex'
+            win_type=self.win_type
         )
 
         module = importlib.import_module("models." + self.model_name)
@@ -148,22 +146,18 @@ class fusion(nn.Module):
         x1_ = self.model_x1(x1)
         x2_ = self.model_x2(x2)
 
-        x1_spec = self.stft(x1_)
-        x2_spec = self.stft(x2_)
+        x1_mag, x1_phase = self.stft(x1_)
+        x2_mag, x2_phase = self.stft(x2_)
 
-        x1_real, x1_imag = torch.chunk(x1_spec, 2, dim=1)
-        x2_real, x2_imag = torch.chunk(x2_spec, 2, dim=1)
-
-        x1_spec = torch.stack([x1_real, x1_imag], dim=1)
-        x2_spec = torch.stack([x2_real, x2_imag], dim=1)
+        x1_spec = torch.stack([x1_mag, x1_phase], dim=1)
+        x2_spec = torch.stack([x2_mag, x2_phase], dim=1)
 
         xf_spec = self.attention_fusion(x1_spec, x2_spec)
 
-        xf_real = xf_spec[:, 0, :, :]
-        xf_imag = xf_spec[:, 1, :, :]
+        xf_mag = xf_spec[:, 0, :, :]
+        xf_phase = xf_spec[:, 1, :, :]
 
-        xf_spec = torch.cat([xf_real, xf_imag], dim=1)
-        out_wav = self.istft(xf_spec)
+        out_wav = self.istft(xf_mag, xf_phase)
 
         out_len = out_wav.shape[-1]
 

@@ -2,8 +2,8 @@ model_name: dc_crn
 input_type: tm
 
 param:
-  window_size: 512
-  hop_size: 256
+  window_size: 400
+  hop_size: 100
   fft_length: 512
   win_type: hann
   input_dim: 1
